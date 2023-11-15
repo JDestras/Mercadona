@@ -20,7 +20,7 @@
                     {% if product.thumbnail %}
                         <img 
                         class="product-img" 
-                        src="{% static 'img/' %}{{ product.thumbnail }}" 
+                        src="{% static 'app/img/products/' %}{{ product.thumbnail }}" 
                         alt="A picture of {{ product.name }}" 
                         title="Artist : {{product.thumbnail_title}}">
                     {% endif %}  

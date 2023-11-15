@@ -85,7 +85,7 @@ function updateProductSection(products) {
         if (product.thumbnail) {
             var imgElement = document.createElement('img');
             imgElement.classList.add('product-img');
-            imgElement.src = '{% static "img/products/" %}' + product.thumbnail;
+            imgElement.src = '{% static "app/img/products/" %}' + product.thumbnail;
             imgElement.alt = 'A picture of ' + product.name;
             imgElement.title = 'Artist : ' + product.thumbnail_title;
 
