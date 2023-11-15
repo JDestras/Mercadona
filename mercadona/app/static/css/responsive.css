@@ -1,0 +1,160 @@
+/* responsive */
+
+
+@media screen and (max-width: 1500px) {
+
+    h1{
+        font-size: 30px;
+    }
+
+    h2{
+        font-size: 25px;
+    }
+
+    h3{
+        font-size:12px;
+    }
+
+    header{ 
+        height:14vh;
+        justify-content: space-around;
+    } 
+    
+    #menu_icon{
+        display:flex;
+        color:var(--main-button-color-);
+        font-size: 2rem;
+        margin-left: 5%;
+    }
+
+    #menu_icon:hover{
+        color:var(--third-text-color-);
+    }
+
+    #menu_txt{
+        display:none;
+    }
+    
+    #menu_txt.show{
+        display:flex;
+        position: absolute;
+        top: 10%;
+        left: 12%;
+        border: 1px solid var(--main-bg-color-);
+        background-color: white;
+        border-radius: 0 20px 20px 20px;
+        padding: 10px;
+        width:100px;
+        height: 140px; 
+        font-size: 12px;  
+    }
+
+    #menu_txt ul{
+        display: flex;
+        flex-direction: column; 
+        margin-left: -70%;
+        margin-top: 30%;
+        gap: 25px;
+    }
+
+    #menu_txt a{
+        font-size: 18px;
+        
+    }
+
+    #menu_txt a:hover{
+        color: var(--second-text-color-);
+    }
+   
+    .home{
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 3rem;
+    }
+
+    .carousel-inner{
+        margin-top: 15%;
+        height:200px;
+        width:280px;
+    }
+    
+    .carousel-caption{
+        height:100px;
+        width: 140px;
+        position:absolute;
+    }
+    
+    .btn-catalog:hover{
+        color: var(--main-button-color-);
+    }
+    
+    .btn-catalog i:hover{
+        color: var(--third-text-color-);
+    }
+    
+    .category-button, .allcategories{
+        font-size: 14px;
+        padding: 5px;
+        height: 30px;
+        width: 100px;
+        margin:5px;
+    }
+
+    .category-button:hover{
+        font-size: 16px;
+    }
+
+    .category-button:focus{
+        font-size: 16px;
+    }
+    
+
+    .article-cell {
+        width: 25vh;
+        height: 28vh;
+    }
+    
+    .name {
+        font-size: 16px;
+    }
+    
+    .init-price {
+        bottom: 2%;
+        font-size: 14px;
+    }
+    
+        
+    .discount-price {
+        bottom: 10%;
+        right: 25%;
+        font-size: 14px;
+    }
+    
+    .offer { 
+        top: 8%;
+        left: 5%;
+        height: 2.2rem;
+        width: 2.2rem;
+        font-size: 10px;
+    }
+    
+    .product-img {
+        margin-top:20%;
+        margin-left:-20%;
+        height:75px;
+        width:100px;
+    }
+    
+    .description {
+        top: 70%;
+        font-size: 10px;
+    }
+
+}
+
+@media screen and (max-width: 600px) {
+    .products-wrapper {
+      grid-template-columns: 1fr 1fr; 
+    }
+}
+

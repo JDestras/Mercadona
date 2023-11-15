@@ -1,0 +1,49 @@
+{% extends 'app/catalog.html' %}
+{% block title %}Filtered Products{% endblock title %}
+{% load static %}
+{% block products %}
+<!-- PRODUCTS GRID-->
+
+
+<section class="products-wrapper" id="products-wrapper">
+    {% for product in products %} 
+        <article class="article-cell">
+            <ul>
+                <li class="{% if product.discount.active %}discount-active{% endif %}"> 
+                    <h3 class="name">{{ product.name }}</h3>
+                    <p class="description">{{ product.description }}</p>
+                    <span class="init-price">{{ product.initial_price }} €</span>
+                    {% if product.discount.active %} 
+                        <span class="discount-price">{{ product.discount.discounted_price }} €</span>
+                        <span class="offer"> {{ product.discount.discount_percentage }} % off </span>
+                    {% endif %}
+                    {% if product.thumbnail %}
+                        <img 
+                        class="product-img" 
+                        src="{% static 'img/' %}{{ product.thumbnail }}" 
+                        alt="A picture of {{ product.name }}" 
+                        title="Artist : {{product.thumbnail_title}}">
+                    {% endif %}  
+                </li>
+            </ul>
+        </article>
+    {% endfor %}
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/menu.js' %}"></script> 
+<script src="{% static 'js/catalog.js' %}"></script>  
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var categoryId = {{ category_id }};
+        fetchProducts(categoryId);
+    });
+  </script>
+{% endblock %}
+
+
+
+
+
+

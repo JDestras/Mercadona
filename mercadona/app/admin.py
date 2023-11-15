@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Product, Discount
+from .models import Category, Product, Discount, Homepage, Event
 # Register your models here.
 
 @admin.register(Category)
@@ -28,3 +28,11 @@ class ProductAdmin(admin.ModelAdmin):
 
     def display_categories(self, obj):
             return",".join([category.name for category in obj.categories.all()])
+        
+@admin.register(Homepage)
+class Homepage(admin.ModelAdmin):
+    list_display = ('name', 'text','image', 'active')
+
+@admin.register(Event)
+class Event(admin.ModelAdmin):
+    list_display = ('name', 'text','image', 'active')
