@@ -1,0 +1,68 @@
+{% extends "admin/change_form.html" %}
+{% load static %}
+
+{% block field_sets %}
+    {{ block.super }}
+
+    <form>
+        <input type="button" id="discount-button" class="submit-row" value="Apply/Modify a discount" style="height: 2.1875rem; line-height: 0.9375rem;">
+    </form>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/forms.css' %}">
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const showFormButton = document.getElementById("discount-button");
+            const formContainer = document.querySelector(".js-inline-admin-formset#discount-group");
+    
+            if (showFormButton && formContainer) {
+                formContainer.style.display = "none";
+
+                showFormButton.addEventListener("click", function () {
+                    formContainer.style.display = "block";
+                    showFormButton.style.display = "none";
+                });
+            }  
+
+            const discountPercentageInput = document.getElementById("id_discount-0-discount_percentage");
+            const initialPriceInput = document.getElementById("id_initial_price");
+            const discountedPriceField = document.querySelector(".field-discounted_price p");
+        
+            // Update on focus change for other fields
+            document.querySelectorAll("#id_initial_price, #id_discount-0-discount_percentage").forEach(function (input) {
+                input.addEventListener("focusout", function () {
+                    // Update only discounted price without status or dates
+                    updateDiscount();
+                });
+            });
+        });
+        
+        function calculateDiscountedPrice(initialPrice, discountPercentage) {
+            // Parse values as floats, set to NaN if parsing fails
+            const initialPriceValue = parseFloat(initialPrice.value);
+            const discountPercentageValue = parseFloat(discountPercentage.value);
+        
+            // Check if discount percentage is a valid number
+            if (!isNaN(discountPercentageValue)) {
+                // Calculate discounted price
+                return initialPriceValue - (initialPriceValue * (discountPercentageValue / 100));
+            } else {
+                // Return NaN if discount percentage is not a valid number
+                return NaN;
+            }
+        }
+        
+        function updateDiscount() {
+            // Get the necessary elements
+            const initialPriceInput = document.getElementById("id_initial_price");
+            const discountPercentageInput = document.getElementById("id_discount-0-discount_percentage");
+            const discountedPriceField = document.querySelector(".field-discounted_price p");
+        
+            // Calculate discounted price
+            const discountedPrice = calculateDiscountedPrice(initialPriceInput, discountPercentageInput);
+        
+            // Display the calculated discounted price
+            discountedPriceField.textContent = isNaN(discountedPrice) ? "-" : discountedPrice.toFixed(2);
+        }
+    </script>
+{% endblock %}
